@@ -10,7 +10,14 @@ let lastCity = "";
 let searchButton = $("#search-button");
 let searchCity = $("#search-city")
 
+fetch(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${APIkey}`)
+     .then(Response => Response.json())
+     .then(data => {
 
+        console.log(data);
+
+
+     })
 
 
 //creating current condition
