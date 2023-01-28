@@ -11,8 +11,8 @@ let searchButton = $("#search-button");
 let searchCity = $("#search-city")
 
 
-// using fetch to find a city
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${APIkey}`)
+// using fetch to find a city (create an eventlisterner for the fetch)
+fetch(`http://api.openweathermap.org/geo/1.0/direct?q=Accra&limit=5&appid=${APIkey}`)
      .then(response => response.json())
      .then(cities => {
 //chosing a city from the cities found in the arrays
@@ -20,11 +20,12 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${API
         console.log(firstcity.lat);
         console.log(firstcity.lon);
 
-
+        return fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${firstcity.lat}&lon=${firstcity.lon}&appid=${APIkey}`)  
+      
 
      })
 
- fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=44.348lon=10.998appid=${APIkey}`)  
+ 
  .then(response => response.json())
  .then(data => {
 
