@@ -2,19 +2,24 @@
 //when a city is search, this should show the current and future condition for that city
   
 
-//setting global variables for API keys
+//setting global variables
 
+let searchCity = $("#search-city");
 let APIkey = "575a1c7b796e55e547288cbfb76ff8e8";
-let currentCity = "";
-let lastCity = "";
-let searchButton = $("#search-button");
-let searchCity = $("#search-city")
-
+let btn = document.querySelector('.btn');
+let localStoreList = [];
 
 // using fetch to find a city (create an eventlisterner for the fetch)
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=Accra&limit=5&appid=${APIkey}`)
-     .then(response => response.json())
-     .then(cities => {
+
+btn.addEventListener('click', function(event){
+     event.preventDefault();
+     const inputVal = input.value
+     console.log("CLICK");
+          var srchInput = document.querySelector("#search-input").value;
+          console.log("INPUT: ", srchInput);
+   fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${srchInput}&limit=5&appid=${APIkey}`)
+   .then(response => response.json())
+   .then(cities => {
 //chosing a city from the cities found in the arrays
         let firstcity = cities [0]
         console.log(firstcity.lat);
@@ -33,12 +38,16 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=Accra&limit=5&appid=${APIk
 
 
      })
+     localStoreList.push(srchInput)
+     for (let i = 1; i < localStoreList.length; i++) {
+          localStorage.setItem(i, JSON.stringify(localStoreList[i]));
+     }
+})
 
 
-//creating current condition
-// let getCurrentConditions = (event) => 
-//     let city = $('#search-city').val();
-//     currentCity = $('#search-city').val();
+// var getCity = localStorage.getItem()
+var srchedCityList = document.querySelector("#searched-city-container");
+var listBtn = document.createElement("button");
+// listBtn.innerHTML = getCity;
+srchedCityList.appendChild(listBtn);
 
-
-// }
