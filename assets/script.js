@@ -13,7 +13,7 @@ let localStoreList = [];
 
 btn.addEventListener('click', function(event){
      event.preventDefault();
-     const inputVal = input.value
+     // const inputVal = input.value
      console.log("CLICK");
           var srchInput = document.querySelector("#search-input").value;
           console.log("INPUT: ", srchInput);
@@ -39,9 +39,10 @@ btn.addEventListener('click', function(event){
 
      })
      localStoreList.push(srchInput)
-     for (let i = 1; i < localStoreList.length; i++) {
+     for (let i = 0; i < localStoreList.length; i++) {
           localStorage.setItem(i, JSON.stringify(localStoreList[i]));
      }
+     
 })
 
 
@@ -51,3 +52,5 @@ var listBtn = document.createElement("button");
 // listBtn.innerHTML = getCity;
 srchedCityList.appendChild(listBtn);
 
+
+ 
