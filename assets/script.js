@@ -10,6 +10,10 @@ let btn = document.querySelector('.btn');
 let localStoreList = [];
 let todayEl = document.querySelector("#today")
 let tempEl = document.querySelector("#temperature")
+let humidityEl = document.querySelector("#humidity")
+let windEl = document.querySelector("#wind-speed")
+let UVEl = document.querySelector("#uv-index")
+
 
 
 // using fetch to find a city (create an eventlisterner for the fetch)
@@ -39,6 +43,8 @@ btn.addEventListener('click', function (event) {
                console.log(data)
                //     console.log(data.list[8].weather[0]); 
                   tempEl.textContent =  ` ${data.list[0].main.temp}`;
+                  humidityEl.textContent = ` ${data.list[0].main.humidity}`;
+                 
 
 
           })
