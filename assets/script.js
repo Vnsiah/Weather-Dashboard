@@ -44,6 +44,7 @@ btn.addEventListener('click', function (event) {
                //     console.log(data.list[8].weather[0]); 
                   tempEl.textContent =  ` ${data.list[0].main.temp}`;
                   humidityEl.textContent = ` ${data.list[0].main.humidity}`;
+                  windEl.textContent = ` ${data.list[0].wind.speed}`;
                  
 
 
@@ -61,8 +62,4 @@ var srchedCityList = document.querySelector("#searched-city-container");
 var listBtn = document.createElement("button");
 // listBtn.innerHTML = getCity;
 srchedCityList.appendChild(listBtn);
-
-
-
-
 
