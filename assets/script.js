@@ -20,7 +20,7 @@ let UVEl = document.querySelector("#uv")
 
 function getWeather(srchInput) {
           console.log("INPUT: ", srchInput);
-          fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${srchInput}&limit=5&appid=${APIkey}`)
+          fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${srchInput}&limit=5&appid=${APIkey}`)
                .then(response => response.json())
                .then(cities => {
                     //chosing a city from the cities found in the arrays
@@ -28,7 +28,7 @@ function getWeather(srchInput) {
                     console.log(firstcity.lat);
                     console.log(firstcity.lon);
      
-                    return fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${firstcity.lat}&lon=${firstcity.lon}&appid=${APIkey}&units=metric`)
+                    return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${firstcity.lat}&lon=${firstcity.lon}&appid=${APIkey}&units=metric`)
      
      
                })
@@ -36,6 +36,9 @@ function getWeather(srchInput) {
      
                .then(response => response.json())
                .then(data => {
+               //filter the date dt_text for the 0 hour
+               
+               getFiveDays(data)
                     console.log(data)
                         console.log(data.list[8].weather[0]); 
                        tempEl.textContent =  ` ${data.list[0].main.temp}`;
@@ -60,9 +63,12 @@ btn.addEventListener('click', function (event) {
      getWeather(srchInput);
 })
 
+
 function getFiveDays(response) {
      var startDtProp = dayjs().add(1, 'day').startOf('day').unix();
      var endDtProp = dayjs().add(6, 'day').startOf('day').unix();
+
+     console.log(response)
 
      for (let i = 0; i < response.length; i++) {
 
