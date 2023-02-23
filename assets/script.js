@@ -79,6 +79,7 @@ function getFiveDays(response) {
                     console.log("RESPONSE LIST: ", response[i]);
                     getWeather(response[i])
                }
+               $("#fiveDay").append(futureCard);
           }
      }
 }
