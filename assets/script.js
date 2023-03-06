@@ -70,17 +70,33 @@ function getFiveDays(response) {
 
      console.log(response)
 
-     for (let i = 0; i < response.length; i++) {
+     for (let i = 0; i < 5; i++) {
+          console.log(response.list[i].main.temp, "hello")
 
-          if (response[i].dt >= startDtProp && response[i].dt < endDtProp) {
+          
 
-               if (response[i].dt_txt.slice(11,13) == "12") {
-                    console.log("RESPONSE: ", response[i].dt_txt.slice(11,13));
-                    console.log("RESPONSE LIST: ", response[i]);
-                    getWeather(response[i])
-               }
-               $("#fiveDay").append(futureCard);
-          }
+          var forecastEl = document.getElementById("forecast")
+
+          var tempEll = document.createElement("li")
+
+          tempEll.textContent = response.list[i].main.temp
+
+
+
+          forecastEl.append(tempEll)
+
+
+
+
+          // if (response[i].dt >= startDtProp && response[i].dt < endDtProp) {
+
+          //      if (response[i].dt_txt.slice(11,13) == "12") {
+          //           console.log("RESPONSE: ", response[i].dt_txt.slice(11,13));
+          //           console.log("RESPONSE LIST: ", response[i]);
+          //           getWeather(response[i])
+          //      }
+               
+          // }
      }
 }
 
