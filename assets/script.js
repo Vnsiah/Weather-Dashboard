@@ -76,27 +76,34 @@ function getFiveDays(response) {
           
 
           var forecastEl = document.getElementById("forecast")
+          var cardEl = document.createElement("div")
+          cardEl.setAttribute("class", "card m-3")
+          var cardBody=document.createElement ("div")
+          cardBody.setAttribute("class", "card-body")
+          var cardTitle = document.createElement("h5")
+          cardTitle.setAttribute("class", "card-title")
+          cardTitle.textContent=response.list[i].dt_txt
+          var cardImg=document.createElement("img")
+          cardImg.setAttribute("class", "card-img-top")
+          cardImg.setAttribute("src", `https://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png`)
+          var tempDiv = document.createElement("div")
+          tempDiv.textContent="Temp: "
+          var tempSpan = document.createElement("span")
+          tempSpan.textContent = response.list[i].main.temp
 
-          var tempEll = document.createElement("li")
+         
 
-          tempEll.textContent = response.list[i].main.temp
-
-
-
-          forecastEl.append(tempEll)
-
-
+        tempDiv.appendChild(tempSpan)
+        cardBody.appendChild(cardTitle)
+        cardBody.appendChild(tempDiv)
+        cardEl.appendChild(cardImg)
+        cardEl.appendChild(cardBody)
 
 
-          // if (response[i].dt >= startDtProp && response[i].dt < endDtProp) {
+          forecastEl.appendChild(cardEl)
 
-          //      if (response[i].dt_txt.slice(11,13) == "12") {
-          //           console.log("RESPONSE: ", response[i].dt_txt.slice(11,13));
-          //           console.log("RESPONSE LIST: ", response[i]);
-          //           getWeather(response[i])
-          //      }
-               
-          // }
+
+
      }
 }
 
