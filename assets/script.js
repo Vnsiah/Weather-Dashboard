@@ -87,15 +87,27 @@ function getFiveDays(response) {
           cardImg.setAttribute("class", "card-img-top")
           cardImg.setAttribute("src", `https://openweathermap.org/img/w/${response.list[i].weather[0].icon}.png`)
           var tempDiv = document.createElement("div")
+          var humidityDiv = document.createElement("div")
+          var windDiv = document.createElement("div")
           tempDiv.textContent="Temp: "
+          humidityDiv.textContent="Humidity: "
+          windDiv.textContent="Wind: "
           var tempSpan = document.createElement("span")
+          var humiditySpan = document.createElement("span")
+          var windSpan = document.createElement("span")
           tempSpan.textContent = response.list[i].main.temp
+          humiditySpan.textContent = response.list[i].main.humidity
+          windSpan.textContent = response.list[i].main.wind
 
          
 
         tempDiv.appendChild(tempSpan)
+        humidityDiv.appendChild(humiditySpan)
+        windDiv.appendChild(windSpan)
         cardBody.appendChild(cardTitle)
         cardBody.appendChild(tempDiv)
+        cardBody.appendChild(humidityDiv)
+        cardBody.appendChild(windDiv)
         cardEl.appendChild(cardImg)
         cardEl.appendChild(cardBody)
 
@@ -114,6 +126,10 @@ var srchedCityList = document.querySelector("#searched-city-container");
 var listBtn = document.createElement("button");
 // listBtn.innerHTML = getCity;
 srchedCityList.appendChild(listBtn);
+
+
+
+
 
 
 
